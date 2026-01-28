@@ -1,6 +1,6 @@
 package SkillBuilders;
 
-public class Puck extends Disk
+public class Puck
 {
 
 }
