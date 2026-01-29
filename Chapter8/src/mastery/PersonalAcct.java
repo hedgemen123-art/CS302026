@@ -1,49 +1,32 @@
 package mastery;
 
 /*
-Program: PersonalAcct.java           Last Date of this Revision: January 28, 2026
-
-Purpose: Defines a personal account that charges a fee if the balance
-falls below the minimum requirement.
-
-Author: Bilal Hajar
-School: CHHS
-Course: Computer Programming 30
+personal account class
 */
 
-/*
-Class Purpose:
-Represents a personal bank account with a minimum balance rule.
-*/
 public class PersonalAcct extends Account
 {
-    /* Constructors */
+    // minimum balance constant
+    private static final double MIN_BALANCE = 100.0;
+    // penalty constant
+    private static final double PENALTY = 2.0;
 
-    /*
-    Purpose: Constructs a PersonalAcct with an initial balance.
-    */
-    public PersonalAcct(double startingBalance)
+    // constructor
+    public PersonalAcct(double bal, String fName, String lName)
     {
-        super(startingBalance);
+        super(bal, fName, lName);
     }
 
-    /* Instance Methods */
-
-    /*
-    Purpose: Withdraws money and applies a fee if balance falls below minimum.
-    */
-    public void withdraw(double amount)
+    // override withdrawal
+    public void withdrawal(double amt)
     {
-        super.withdraw(amount);
+        // do normal withdrawal
+        super.withdrawal(amt);
 
-        if (balance < MINIMUM_BALANCE)
+        // check minimum balance
+        if (getBalance() < MIN_BALANCE)
         {
-            balance = balance - PENALTY_FEE;
+            super.withdrawal(PENALTY);
         }
     }
-
-    /* Static Fields */
-
-    private static final double MINIMUM_BALANCE = 100.0;
-    private static final double PENALTY_FEE = 2.0;
 }

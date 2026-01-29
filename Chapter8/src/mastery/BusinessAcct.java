@@ -1,49 +1,32 @@
 package mastery;
 
 /*
-Program: BusinessAcct.java           Last Date of this Revision: January 28, 2026
-
-Purpose: Defines a business account that charges a fee if the balance
-falls below the minimum requirement.
-
-Author: Bilal Hajar
-School: CHHS
-Course: Computer Programming 30
+business account class
 */
 
-/*
-Class Purpose:
-Represents a business bank account with a higher minimum balance rule.
-*/
 public class BusinessAcct extends Account
 {
-    /* Constructors */
+    // minimum balance constant
+    private static final double MIN_BALANCE = 500.0;
+    // penalty constant
+    private static final double PENALTY = 10.0;
 
-    /*
-    Purpose: Constructs a BusinessAcct with an initial balance.
-    */
-    public BusinessAcct(double startingBalance)
+    // constructor
+    public BusinessAcct(double bal, String fName, String lName)
     {
-        super(startingBalance);
+        super(bal, fName, lName);
     }
 
-    /* Instance Methods */
-
-    /*
-    Purpose: Withdraws money and applies a fee if balance falls below minimum.
-    */
-    public void withdraw(double amount)
+    // override withdrawal
+    public void withdrawal(double amt)
     {
-        super.withdraw(amount);
+        // do normal withdrawal
+        super.withdrawal(amt);
 
-        if (balance < MINIMUM_BALANCE)
+        // check minimum balance==
+        if (getBalance() < MIN_BALANCE)
         {
-            balance = balance - PENALTY_FEE;
+            super.withdrawal(PENALTY);
         }
     }
-
-    /* Static Fields */
-
-    private static final double MINIMUM_BALANCE = 500.0;
-    private static final double PENALTY_FEE = 10.0;
 }
