@@ -24,8 +24,27 @@ public class QueueList
         size = 0;
     }
 
-    // adds item to queue
-    public void enqueue(Object item)
+    // adds item to front
+    public void enqueueFront(String item)
+    {
+        Node newNode = new Node(item);
+
+        if (isEmpty())
+        {
+            front = newNode;
+            rear = newNode;
+        }
+        else
+        {
+            newNode.next = front;
+            front = newNode;
+        }
+
+        size++;
+    }
+
+    // adds item to rear
+    public void enqueueRear(String item)
     {
         Node newNode = new Node(item);
 
@@ -43,10 +62,10 @@ public class QueueList
         size++;
     }
 
-    // removes item from queue
-    public Object dequeue()
+    // removes item from front
+    public String dequeue()
     {
-        Object item = null;
+        String item = null;
 
         if (!isEmpty())
         {
@@ -58,19 +77,6 @@ public class QueueList
             {
                 rear = null;
             }
-        }
-
-        return item;
-    }
-
-    // returns front item
-    public Object peek()
-    {
-        Object item = null;
-
-        if (!isEmpty())
-        {
-            item = front.data;
         }
 
         return item;
@@ -88,13 +94,35 @@ public class QueueList
         return size;
     }
 
+    // displays queue
+    public void displayQueue()
+    {
+        if (isEmpty())
+        {
+            System.out.println("queue is empty");
+            return;
+        }
+
+        Node current = front;
+
+        System.out.print("queue front -> ");
+
+        while (current != null)
+        {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+
+        System.out.println("<- rear");
+    }
+
     // node class
     private class Node
     {
-        private Object data;
+        private String data;
         private Node next;
 
-        public Node(Object d)
+        public Node(String d)
         {
             data = d;
             next = null;
