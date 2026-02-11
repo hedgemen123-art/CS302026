@@ -1,1 +1,2 @@
-Programmers must understand encryption to protect personal data, secure systems, and prevent cybercrime. Understanding encryption helps developers defend against hackers, safeguard privacy, and build trustworthy technology.
+Programmers must understand encryption to protect personal data, secure systems, and prevent cybercrime. 
+Understanding encryption helps developers defend against hackers, safeguard privacy, and build trustworthy technology.
